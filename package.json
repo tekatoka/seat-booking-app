@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "netlify deploy --prod",
+    "build": "npx tsc",
     "start": "node dist/index.js",
     "start:server-dev": "start npm run start:client && start npm run start:server-dev",
     "start:server": "node dist/index.js",
