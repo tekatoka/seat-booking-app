@@ -21,15 +21,16 @@ dotenv_1.default.config();
 const app = (0, express_1.default)();
 app.use(express_1.default.json());
 app.use((0, cors_1.default)());
+const router = express_1.default.Router();
 const dataController = new data_1.default();
-app.get("/", (req, res) => {
+router.get("/", (req, res) => {
     res.send("Hello World From the Typescript Server!!!");
 });
-app.get("/seatOrder", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+router.get("/seatOrder", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const data = yield dataController.getData();
     res.send(data);
 }));
-app.post("/newOrder", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+router.post("/newOrder", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const data = yield dataController.getShuffledData();
     yield dataController.writeData(data);
     res.status(201).json(data);
@@ -52,6 +53,7 @@ node_cron_1.default.schedule("*/60 * * * * *", function () {
     });
 });
 const port = process.env.PORT || 8000;
+app.use(`/.netlify/functions/api`, router);
 app.listen(port, () => {
     console.log(`Example app listening on port ${port}`);
 });
