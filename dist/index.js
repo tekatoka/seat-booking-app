@@ -14,6 +14,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const dotenv_1 = __importDefault(require("dotenv"));
 const express_1 = __importDefault(require("express"));
+const serverless_http_1 = __importDefault(require("serverless-http"));
 const node_cron_1 = __importDefault(require("node-cron"));
 const cors_1 = __importDefault(require("cors"));
 const data_1 = __importDefault(require("./controllers/data"));
@@ -53,7 +54,8 @@ node_cron_1.default.schedule("*/60 * * * * *", function () {
     });
 });
 const port = process.env.PORT || 8000;
-app.use(`/.netlify/functions/api`, router);
 app.listen(port, () => {
     console.log(`Example app listening on port ${port}`);
 });
+app.use(`/.netlify/functions/api`, router);
+module.exports.handler = (0, serverless_http_1.default)(app);

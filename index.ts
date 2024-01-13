@@ -1,5 +1,6 @@
 import dotenv from "dotenv";
 import express, { Express, Request, Response } from "express";
+import serverless from 'serverless-http';
 import cron from "node-cron";
 import cors from "cors";
 import DataController, {
@@ -54,8 +55,9 @@ cron.schedule("*/60 * * * * *", async function () {
 
 const port = process.env.PORT || 8000;
 
-app.use(`/.netlify/functions/api`, router);
-
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);
 }); 
+
+app.use(`/.netlify/functions/api`, router);
+module.exports.handler = serverless(app);
