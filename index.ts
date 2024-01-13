@@ -15,6 +15,8 @@ const app: Express = express();
 app.use(express.json());
 app.use(cors());
 
+const router = express.Router();
+
 const dataController = new DataController();
 
 app.get("/", (req: Request, res: Response) => {
@@ -51,6 +53,8 @@ cron.schedule("*/60 * * * * *", async function () {
 });
 
 const port = process.env.PORT || 8000;
+
+app.use(`/.netlify/functions/api`, router);
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);
