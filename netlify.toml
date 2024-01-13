@@ -1,11 +1,3 @@
 [build]
   command = "npm run build"
   functions = "functions"
-
-# this is actually a Rewrite
-# totally optional, but makes up for
-# a much better UX
-[[redirects]]
-  from = "/"
-  to = "/.netlify/functions/api"
-  status = 200
