@@ -2,12 +2,12 @@
   "name": "seat-booking-app",
   "version": "1.0.0",
   "description": "",
-  "main": "dist/functions/api.js",
+  "main": "dist/api.js",
   "scripts": {
     "build": "npx tsc",
-    "start": "node dist/functions/api.js",
+    "start": "node dist/api.js",
     "start:server-dev": "start npm run start:client && start npm run start:server-dev",
-    "start:server": "node dist/functions/api.js",
+    "start:server": "node dist/api.js",
     "start:client": "npm run start --prefix client",
     "test": "echo \"no test specified\" && exit 1"
   },
