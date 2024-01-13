@@ -53,11 +53,11 @@ cron.schedule("*/60 * * * * *", async function () {
   console.log("shuffled new seat order: " + Date.now().toLocaleString());
 });
 
-const port = process.env.PORT || 8000;
+// const port = process.env.PORT || 8000;
 
-app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`);
-}); 
+// app.listen(port, () => {
+//   console.log(`Example app listening on port ${port}`);
+// }); 
 
 app.use(`/.netlify/functions/api`, router);
 module.exports.handler = serverless(app);

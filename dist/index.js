@@ -53,9 +53,9 @@ node_cron_1.default.schedule("*/60 * * * * *", function () {
         console.log("shuffled new seat order: " + Date.now().toLocaleString());
     });
 });
-const port = process.env.PORT || 8000;
-app.listen(port, () => {
-    console.log(`Example app listening on port ${port}`);
-});
+// const port = process.env.PORT || 8000;
+// app.listen(port, () => {
+//   console.log(`Example app listening on port ${port}`);
+// }); 
 app.use(`/.netlify/functions/api`, router);
 module.exports.handler = (0, serverless_http_1.default)(app);
