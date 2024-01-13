@@ -12,6 +12,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.handler = void 0;
 const dotenv_1 = __importDefault(require("dotenv"));
 const express_1 = __importDefault(require("express"));
 const serverless_http_1 = __importDefault(require("serverless-http"));
@@ -53,9 +54,9 @@ node_cron_1.default.schedule("*/60 * * * * *", function () {
         console.log("shuffled new seat order: " + Date.now().toLocaleString());
     });
 });
-// const port = process.env.PORT || 8000;
-// app.listen(port, () => {
-//   console.log(`Example app listening on port ${port}`);
-// }); 
+const port = process.env.PORT || 8000;
+app.listen(port, () => {
+    console.log(`Example app listening on port ${port}`);
+});
 app.use(`/.netlify/functions/api`, router);
-module.exports.handler = (0, serverless_http_1.default)(app);
+exports.handler = (0, serverless_http_1.default)(app);
