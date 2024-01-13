@@ -18,7 +18,7 @@ const express_1 = __importDefault(require("express"));
 const serverless_http_1 = __importDefault(require("serverless-http"));
 const node_cron_1 = __importDefault(require("node-cron"));
 const cors_1 = __importDefault(require("cors"));
-const data_1 = __importDefault(require("./controllers/data"));
+const data_1 = __importDefault(require("../controllers/data"));
 dotenv_1.default.config();
 const app = (0, express_1.default)();
 app.use(express_1.default.json());

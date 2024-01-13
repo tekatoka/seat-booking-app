@@ -7,7 +7,7 @@ import DataController, {
   IData,
   IDataResponse,
   ISeatItem,
-} from "./controllers/data";
+} from "../controllers/data";
 
 dotenv.config();
 
