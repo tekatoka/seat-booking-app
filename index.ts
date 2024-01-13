@@ -19,16 +19,16 @@ const router = express.Router();
 
 const dataController = new DataController();
 
-app.get("/", (req: Request, res: Response) => {
+router.get("/", (req: Request, res: Response) => {
   res.send("Hello World From the Typescript Server!!!");
 });
 
-app.get("/seatOrder", async (req: Request, res: Response) => {
+router.get("/seatOrder", async (req: Request, res: Response) => {
   const data: IDataResponse = await dataController.getData();
   res.send(data);
 });
 
-app.post("/newOrder", async (req: Request, res: Response) => {
+router.post("/newOrder", async (req: Request, res: Response) => {
   const data: ISeatItem[] = await dataController.getShuffledData();
   await dataController.writeData(data);
   res.status(201).json(data);
